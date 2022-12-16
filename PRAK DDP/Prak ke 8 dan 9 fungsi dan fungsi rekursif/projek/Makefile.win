@@ -1,0 +1,31 @@
+# Project: projek_test
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = lingkaran.o main_lingkaran.o
+LINKOBJ  = lingkaran.o main_lingkaran.o
+LIBS     = -L"C:/Users/kemas khairunsyah/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = 
+CXXINCS  = -I"C:/Users/kemas khairunsyah/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+BIN      = projek_test.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+DEL      = C:\Users\kemas khairunsyah\Dev-Cpp\DevCpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+lingkaran.o: lingkaran.c
+	$(CPP) -c lingkaran.c -o lingkaran.o $(CXXFLAGS)
+
+main_lingkaran.o: main_lingkaran.cpp
+	$(CPP) -c main_lingkaran.cpp -o main_lingkaran.o $(CXXFLAGS)
