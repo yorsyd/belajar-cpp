@@ -24,7 +24,7 @@ do{
 		cin.ignore();
 		cout<<"===Pendaftaran mahasiswa!!!=== \n";
 		cout<<"Masukan nama anda\t: ";getline(cin,mhs[n].nama);
-		cout<<"Masukan nim anda\t: ";cin>>mhs[n].nim;
+		cout<<"Masukan NIM anda\t: ";cin>>mhs[n].nim;
 		cin.ignore();
 		cout<<"Masukan TTl anda\t: ";getline(cin,mhs[n].tmpat_tnggl_lahir);
 		cout<<"Masukan prodi anda\t: ";getline(cin,mhs[n].prodi);
@@ -46,7 +46,7 @@ do{
 			for(int i=0;i<n;i++){
 				cout<<"Mahasiswa ke-"<<i+1<<endl;
 				cout<<"Nama mahasiswa\t\t\t: "<<mhs[i].nama<<endl;
-				cout<<"Nim mahasiswa\t\t\t: "<<mhs[i].nim<<endl;
+				cout<<"NIM mahasiswa\t\t\t: "<<mhs[i].nim<<endl;
 				cout<<"Tempat Tanggal Lahir mahasiswa\t: "<<mhs[i].tmpat_tnggl_lahir<<endl;
 				cout<<"Prodi mahasiswa\t\t\t: "<<mhs[i].prodi<<endl;					
 				cout<<"Fakultas mahasiswa\t\t: "<<mhs[i].fakultas<<endl;
@@ -61,7 +61,7 @@ do{
 				system("cls");
 				goto td;
 			}else{
-				break;
+				breaks
 			}	
 		}else{
 			cout<<"===Daftar dosen Universitas Ahmad Dahlan===\n";
@@ -69,7 +69,7 @@ do{
 			for(int i=0;i<d;i++){
 				cout<<"Dosen ke-"<<i+1<<endl;
 				cout<<"Nama dosen\t\t\t: "<<dsn[i].nama<<endl;
-				cout<<"Nim dosen\t\t\t: "<<dsn[i].nip<<endl;
+				cout<<"NIP dosen\t\t\t: "<<dsn[i].nip<<endl;
 				cout<<"Tempat Tanggal Lahir dosen\t: "<<dsn[i].tmpat_tnggl_lahir<<endl;
 				cout<<"Prodi yang di ajar dosen\t: "<<dsn[i].prodi<<endl;					
 				cout<<endl<<endl;
@@ -81,7 +81,7 @@ do{
 		cin.ignore();
 		cout<<"===Pendaftaran dosen!!!=== \n";
 		cout<<"Masukan nama anda\t: ";getline(cin,dsn[d].nama);
-		cout<<"Masukan nim anda\t: ";cin>>dsn[d].nim;
+		cout<<"Masukan NIP anda\t: ";cin>>dsn[d].nim;
 		cin.ignore();
 		cout<<"Masukan TTl anda\t: ";getline(cin,dsn[d].tmpat_tnggl_lahir);
 		cout<<"Masukan prodi anda\t: ";getline(cin,dsn[d].prodi);
