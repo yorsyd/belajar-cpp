@@ -2,7 +2,7 @@
 using namespace std;
 struct mahasiswa{
 	string nama,tmpat_tnggl_lahir,prodi,fakultas;
-	double nim,nip;  //jika nim tidak bisa mengggunakan int maka anti saja dengan string
+	double nim,nip; 
 };
 int main(){
 	mahasiswa mhs[40];char dftr;
