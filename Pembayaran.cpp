@@ -345,128 +345,30 @@ do{
 		}
 		case 3:{
 			system("cls");
-			cout<<"Pilih penyedia jasa : "<<endl;
-			cout<<"1. Lion Air \n2. Garuda Indonesia \n3. Citilink Ticket\n4. Air Asia\n";
-			cin>>pil;
-			if(pil==1){
-				system("cls");
-				cout<<"Masukan No. VA : ";cin>>va;
-				cout<<"Nominal "<<endl;
-				cin>>nominal;
-				system("cls");
-				cout<<"Nomor tagihan       : "<<va<<endl;
-				cout<<"Harga tiket anda    : "<<nominal<<endl;
-				cout<<"Biaya transaksi     : "<<tiket<<endl;
-				cout<<"Total tagihan anda  : "<<nominal+tiket<<endl;
-				cout<<"Maskapai            : Lion Air"<<endl;
-				cout<<"Lanjut? (y/n)";cin>>lnjt;			
-				if(lnjt == 'y'||lnjt == 'Y'){
-					if(saldo<nominal){
-						system("cls");
-						cout<<"Saldo anda kurang!"<<endl;
-					}else{
-						cout<<"Pembayaran berhasil!"<<endl;
-						total = nominal+tiket;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}
-				}else if(lnjt=='n'||lnjt=='N'){
+			cout<<"Masukan No. VA : ";cin>>va;
+			cout<<"Nominal "<<endl;
+			cin>>nominal;
+			system("cls");
+			cout<<"Nomor tagihan       : "<<va<<endl;
+			cout<<"Harga tiket anda    : "<<nominal<<endl;
+			cout<<"Biaya transaksi     : "<<tiket<<endl;
+			cout<<"Total tagihan anda  : "<<nominal+tiket<<endl;
+			cout<<"Lanjut? (y/n)";cin>>lnjt;			
+			if(lnjt == 'y'||lnjt == 'Y'){
+				if(saldo<nominal){
 					system("cls");
-					continue;
+					cout<<"Saldo anda kurang!"<<endl;
+				}else{
+					cout<<"Pembayaran berhasil!"<<endl;
+					total = nominal+tiket;
+					saldo -= total;
+					cout<<"Sisa saldo anda : "<<saldo<<endl;
 				}
-			}else if(pil==2){
+			}else if(lnjt=='n'||lnjt=='N'){
 				system("cls");
-				cout<<"Masukan No. VA : ";cin>>va;
-				cout<<"Nominal "<<endl;
-				cin>>nominal;
-				system("cls");
-				cout<<"Nomor tagihan       : "<<va<<endl;
-				cout<<"Harga tiket anda    : "<<nominal<<endl;
-				cout<<"Biaya transaksi     : "<<tiket<<endl;
-				cout<<"Total tagihan anda  : "<<nominal+tiket<<endl;
-				cout<<"Maskapai            : Garuda Indonesia"<<endl;
-				cout<<"Lanjut? (y/n)";cin>>lnjt;			
-				if(lnjt == 'y'||lnjt == 'Y'){
-					if(saldo<nominal){
-						system("cls");
-						cout<<"Saldo anda kurang!"<<endl;
-						cout<<"Ketik N untuk keluar \n";cin>>lnjt;
-						if(lnjt == 'N'||lnjt == 'n'){
-						
-						}else{
-							system("cls");
-							continue;
-						}
-					}else{
-						cout<<"Pembayaran berhasil!"<<endl;
-						total = nominal+tiket;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}
-					system("pause");
-					system("cls");
-				}else if(lnjt=='n'||lnjt=='N'){
-					system("cls");
-					continue;
-				}
-			}else if(pil==3){
-				system("cls");
-				cout<<"Masukan No. VA : ";cin>>va;
-				cout<<"Nominal "<<endl;
-				cin>>nominal;
-				system("cls");
-				cout<<"Nomor tagihan       : "<<va<<endl;
-				cout<<"Harga tiket anda    : "<<nominal<<endl;
-				cout<<"Biaya transaksi     : "<<tiket<<endl;
-				cout<<"Total tagihan anda  : "<<nominal+tiket<<endl;
-				cout<<"Maskapai            : Citilink"<<endl;
-				cout<<"Lanjut? (y/n)";cin>>lnjt;			
-				if(lnjt == 'y'||lnjt == 'Y'){
-					if(saldo<nominal){
-						system("cls");
-						cout<<"Saldo anda kurang!"<<endl;
-					}else{
-						cout<<"Pembayaran berhasil!"<<endl;
-						total = nominal+tiket;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}
-					system("pause");
-					system("cls");
-				}else if(lnjt=='n'||lnjt=='N'){
-					system("cls");
-					continue;
-				}
-			}else if (pil==4){
-				system("cls");
-				cout<<"Masukan No. VA : ";cin>>va;
-				cout<<"Nominal "<<endl;
-				cin>>nominal;
-				system("cls");
-				cout<<"Nomor tagihan       : "<<va<<endl;
-				cout<<"Harga tiket anda    : "<<nominal<<endl;
-				cout<<"Biaya transaksi     : "<<tiket<<endl;
-				cout<<"Total tagihan anda  : "<<nominal+tiket<<endl;
-				cout<<"Maskapai            : Air Asia"<<endl;
-				cout<<"Lanjut? (y/n)";cin>>lnjt;			
-				if(lnjt == 'y'||lnjt == 'Y'){
-					if(saldo<nominal){
-						system("cls");
-						cout<<"Saldo anda kurang!"<<endl;
-						cout<<"Ketik N untuk kembali \n";cin>>lnjt;
-						cout<<"Pembayaran berhasil!"<<endl;
-						total = nominal+tiket;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}
-					system("pause");
-					system("cls");
-				}else if(lnjt=='n'||lnjt=='N'){
-					system("cls");
-					continue;
-				}
+				continue;
 			}
-			break;
+		break;
 		}
 		case 4:{
 			system("cls");
