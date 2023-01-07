@@ -1,14 +1,275 @@
 #include<iostream>
 using namespace std;
+
+int pulsa,total,saldo=10000000,paket,transaksi=1500,pil,pln,indhme=280000, PPN = 280000*11/100,nominal = 125000,tiket=5000,tagihan = 100000;
+char no_id[20], lnjt;
+
+void konfir_pulsa(),konfir_paket(),konfir_pln(), pembayaran();
+
+void kurang(){
+	system("cls");
+	cout<<"Saldo anda kurang!"<<endl;
+}
+void berhasil(){
+	system("cls");
+	cout<<"===pembayaran berhasil==="<<endl;
+	cout<<"Sisa saldo anda : "<< saldo <<endl;
+}
+void menu_paket(){
+	system("cls");
+	cout<<"Pilih paket \n";
+	cout<<"1. 2 GB    5. 20 GB\n";
+	cout<<"2. 8 GB    6. 30 GB\n";
+	cout<<"3. 10 GB   7. 50 GB\n";
+	cout<<"4. 15 GB   8. 60 GB\n";
+	cin>>pil;
+	if(pil==1){
+		paket=10000;
+		konfir_paket();
+	}else if(pil==2){
+		paket=25000;
+		konfir_paket();
+	}else if(pil==3){
+		paket=30000;
+		konfir_paket();
+	}else if(pil==4){
+		paket=40000;
+		konfir_paket();
+	}else if(pil==5){
+		paket=55000;
+		konfir_paket();
+	}else if(pil==6){
+		paket=65000;
+		konfir_paket();
+	}else if(pil==7){
+		paket=100000;
+		konfir_paket();
+	}else if(pil==8){
+		paket=120000;
+		konfir_paket();
+	}
+}
+void menu_pulsa(){
+	system("cls");
+	cout<<"Pilih nominal \n";
+	cout<<"1. 15000	  5. 40000\n";
+	cout<<"2. 20000	  6. 50000\n";
+	cout<<"3. 25000	  7. 75000\n";
+	cout<<"4. 30000	  8. 100000\n";
+	cout<<"Pilih nominal : ";
+	cin>>pil;
+	if(pil==1){
+		pulsa = 15000;
+		konfir_pulsa();
+	}else if(pil==2){
+		pulsa = 20000;
+		konfir_pulsa();
+	}else if(pil==3){
+		system("cls");
+		pulsa = 25000;
+		konfir_pulsa();
+	}else if(pil==4){
+		system("cls");
+		pulsa = 30000;
+		konfir_pulsa();
+	}else if(pil==5){
+		system("cls");
+		pulsa = 40000;
+		konfir_pulsa();
+	}else if(pil==6){
+		system("cls");
+		pulsa = 50000;
+		konfir_pulsa();
+	}else if(pil==7){
+		system("cls");
+		pulsa = 75000;
+		konfir_pulsa();
+	}else if(pil==8){
+		system("cls");
+		pulsa = 100000;
+		konfir_pulsa();
+	}
+	
+}
+void menu_PLN(){
+	cout<<"Masukan ID Pelanggan/No Meter : "; cin >> no_id;
+	system("CLS");
+	
+	cout<<"Pilih nominal \n";
+	cout<<"1. 20000 	 5. 500000\n";
+	cout<<"2. 50000 	 6. 1 juta\n";
+	cout<<"3. 100000	 7. 5 juta\n";
+	cout<<"4. 200000	 8. 10 juta\n";
+	cin>>pil;
+	if(pil==1){
+		pln = 20000;
+		konfir_pln();
+	}else if(pil==2){
+		pln = 50000;
+		konfir_pln();
+	}else if(pil==3){
+		pln = 100000;
+		konfir_pln();
+	}else if(pil==4){
+		pln = 200000;
+		konfir_pln();
+	}else if(pil==5){
+		pln = 500000;
+		konfir_pln();
+	}else if(pil==6){
+		pln = 1000000;
+		konfir_pln();
+	}else if(pil==7){
+		pln = 5000000;
+		konfir_pln();
+	}else if(pil==8){
+		pln = 10000000;
+		konfir_pln();
+	}
+
+}
+void konfir_pulsa(){
+	system("cls");
+	total = pulsa + transaksi;
+	saldo -= total;
+	cout<<"Nomor            : "<< no_id <<endl;
+	cout<<"Nominal          : "<< pulsa <<endl;
+	cout<<"Biaya transaksi  : "<< transaksi <<endl;
+	cout<<"Total pembayaran : "<< total <<endl;
+	cout<<"Lanjutkan Transaksi? (y/n): ";
+	cin>>lnjt;
+	if(lnjt == 'y'||lnjt == 'Y'){
+		if(saldo<total){
+			kurang();
+		} else{
+			berhasil();
+		}
+	}else if(lnjt=='n'){
+		system("cls");
+		menu_pulsa();
+	}
+}
+void konfir_paket(){
+	system("cls");
+	total = paket+transaksi;
+	saldo -= total;
+	cout<<"Nomor            : "<<no_id<<endl;
+	cout<<"Paket 2GB        : "<<paket<<endl;
+	cout<<"Biaya transaksi  : "<<transaksi<<endl;
+	cout<<"Total pembayaran : "<<total<<endl;
+	cout<<"Lanjut Transaksi? (y/n)"<<endl;
+	cin>>lnjt;
+	if(lnjt == 'y'||lnjt == 'Y'){
+		if (saldo < total){
+			kurang();
+		} else{
+			berhasil();
+		}
+	}else if(lnjt=='n'){
+		system("cls");
+		menu_paket();
+	}
+}
+void konfir_internet(){
+	cout<<"Masukan nomor jastel : ";
+	cin >> no_id;
+	
+	system("cls");
+	total = indhme+PPN;
+	saldo -= total;
+	cout<<"Nomor tagihan       : "<<no_id<<endl;
+	cout<<"Tagihan anda        : "<<indhme<<endl;
+	cout<<"PPN 11%             : "<<PPN<<endl;
+	cout<<"Total tagihan anda  : "<<indhme+PPN<<endl;
+	cout<<"Lanjut Transaksi?(y/n)";
+	cin>>lnjt;
+	if(lnjt == 'y'||lnjt == 'Y'){
+		if(saldo<indhme+PPN){
+			kurang();
+		} else{
+			berhasil();
+		}
+	} else if(lnjt=='n'||lnjt=='N'){
+		system("cls");
+		pembayaran();
+	}
+}
+void konfir_tiket(){
+	system("cls");
+	cout<<"Masukan No. VA : "; cin >> no_id;
+	
+	system("cls");
+	total = nominal + tiket;
+	saldo -= total;
+	cout<<"Nomor tagihan       : "<<no_id<<endl;
+	cout<<"Harga tiket anda    : "<<nominal<<endl;
+	cout<<"Biaya transaksi     : "<<tiket<<endl;
+	cout<<"Total tagihan anda  : "<< total <<endl;
+	cout<<"Lanjut Transaksi? (y/n)";cin>>lnjt;			
+	if(lnjt == 'y'||lnjt == 'Y'){
+		if(saldo<nominal){
+			kurang();
+		}else{
+			berhasil();
+		}
+	}else if(lnjt=='n'||lnjt=='N'){
+		system("cls");
+		pembayaran();
+	}
+}
+void konfir_PDAM(){
+	system("cls");
+	cout<<"Pembayaran air bersih  \n";
+	cout<<"Nomor Virtual      :  "; cin>>no_id;
+	
+	system("cls");
+	total = tagihan+transaksi;
+	saldo -= total;
+	cout<<"Nomor virtual      : "<<no_id<<endl;
+	cout<<"Tagihan            : "<<tagihan<<endl;
+	cout<<"Biaya Transaksi    : "<<transaksi<<endl;
+	cout<<"Total tagihan anda : "<<total<<endl;
+	cout<<"Lanjut Transaksi? (y/n)";cin>>lnjt;
+	if(lnjt=='y'||lnjt=='Y'){
+		if(saldo<tagihan){
+			kurang();
+		}else{
+			berhasil();
+		}
+	}else if(lnjt=='n'||lnjt=='N'){
+		system("cls");
+		pembayaran();
+		}
+}
+void konfir_pln(){
+	
+	system("cls");
+	total = pln+transaksi;
+	saldo -= total;
+	cout<<"Nomor   : "<<no_id<<endl;
+	cout<<"Nominal : "<<pln<<endl;
+	cout<<"Biaya transaksi : "<<transaksi<<endl;
+	cout<<"Total pembayaran : "<< total <<endl;
+	cout<<"Lanjut Transaksi? (y/n)"<<endl;
+	cin>>lnjt;
+	if(lnjt == 'y'||lnjt == 'Y'){
+		if(saldo<pln){
+			kurang();
+		}else{
+			berhasil();
+		}
+	}else if(lnjt=='n'){
+		system("cls");
+		menu_PLN();
+	}
+}
 void pembayaran(){
-		int pil,saldo=100000,total,transaksi=1500;
-	int indhme=280000, PPN = 280000*11/100,nominal,tiket=5000,nmr_vrtual,tagihan,idpel;
-	string nohp ,jastel,va;char lnjt;
+	
 do{
 	//Menu Pembayaran
 	cout<<"Pilih Pembayaran : "<<endl;
 	cout<<"1. Telepon/hp\n";
-	cout<<"2. Telkom/indihome\n";
+	cout<<"2. Internet Berlangganan\n";
 	cout<<"3. Tiket\n";
 	cout<<"4. PDAM\n";
 	cout<<"5. PLN prabayar\n";
@@ -17,585 +278,45 @@ do{
 	switch(pil){
 		case 1:{
 			system("cls");
-			cout<<"nomor Telepon/HP:\n";cin>>nohp;
+			cout<<"nomor Telepon/HP:\n"; cin >> no_id;
 			system("CLS");
 			//mau pulsa atau paket?
 			cout<<"1. pulsa \n";
 			cout<<"2. Paket data \n";
 			cin>>pil;
 			if(pil==1){
-				system("CLS");
-				cout<<"Pilih nominal \n";
-				cout<<"1. 15000	  5. 40000\n";
-				cout<<"2. 20000	  6. 50000\n";
-				cout<<"3. 25000	  7. 75000\n";
-				cout<<"4. 30000	  8. 100000\n";
-				cin>>pil;
-				if(pil==1){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Nominal          : "<<15000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<15000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 15000 + transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==2){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Nominal          : "<<20000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<20000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 20000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==3){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Nominal          : "<<25000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<25000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 25000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==4){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Nominal          : "<<30000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<30000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 30000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==5){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Nominal          : "<<40000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<40000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 40000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==6){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Nominal          : "<<50000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<50000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 50000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==7){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Nominal          : "<<75000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<75000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 75000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==8){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Nominal          : "<<100000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<100000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 100000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}
-			
+				menu_pulsa();
 			}else{
-				system("CLS");
-				cout<<"Pilih paket \n";
-				cout<<"1. 2 GB   5. 20 GB\n";
-				cout<<"2. 8 GB   6. 30 GB\n";
-				cout<<"3. 10 GB  7. 50 GB\n";
-				cout<<"4. 15 GB  8. 60 GB\n";
-				cin>>pil;
-				if(pil==1){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Paket 2GB        : "<<10000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<10000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						cout<<"Sisa saldo anda : "<<saldo-10000+transaksi<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==2){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Paket 8GB        : "<<25000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<25000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 25000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==3){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Paket 10GB       : "<<30000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<30000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 30000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==4){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Paket 15GB       : "<<40000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<40000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 40000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==5){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Paket 20GB       : "<<55000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<55000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 55000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==6){
-					system("cls");  
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Paket 30GB       : "<<65000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<65000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 65000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==7){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Paket 50GB       : "<<100000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<100000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 100000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-						system("pause");
-						system("cls");
-					}else if(lnjt=='n'){
-						continue;
-					}
-				}else if(pil==8){
-					system("cls");
-					cout<<"Nomor            : "<<nohp<<endl;
-					cout<<"Paket 60GB       : "<<120000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<120000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						cout<<"===pembayaran berhasil==="<<endl;
-						total = 120000+transaksi;
-						saldo -= total;
-						cout<<"Sisa saldo anda : "<<saldo<<endl;
-						system("pause");
-						system("cls");
-					}else if(lnjt=='n'){
-						continue;
-					}
-				}
+				menu_paket();
 			}
 		break;
 		}
 		case 2:{
-			cout<<"Masukan nomor jastel : ";
-			cin>>jastel;
-			system("cls");
-			cout<<"Nomor tagihan       : "<<jastel<<endl;
-			cout<<"Tagihan anda        : "<<indhme<<endl;
-			cout<<"PPN 11%             : "<<PPN<<endl;
-			cout<<"Total tagihan anda  : "<<indhme+PPN<<endl;
-			cout<<"Lanjut?(y/n)";
-			cin>>lnjt;
-			if(lnjt == 'y'||lnjt == 'Y'){
-				if(saldo<310800){
-					system("cls");
-					cout<<"Saldo anda kurang!"<<endl;
-				}else{
-					cout<<"Pembayaran berhasil!"<<endl;
-					total = indhme+PPN;
-					saldo -= total;
-					cout<<"Sisa saldo anda : "<<saldo<<endl;
-				}
-			}else if(lnjt=='n'||lnjt=='N'){
-				system("cls");
-				continue;
-			}
+			konfir_internet();
 			break;
 		}
 		case 3:{
-			system("cls");
-			cout<<"Masukan No. VA : ";cin>>va;
-			cout<<"Nominal "<<endl;
-			cin>>nominal;
-			system("cls");
-			cout<<"Nomor tagihan       : "<<va<<endl;
-			cout<<"Harga tiket anda    : "<<nominal<<endl;
-			cout<<"Biaya transaksi     : "<<tiket<<endl;
-			cout<<"Total tagihan anda  : "<<nominal+tiket<<endl;
-			cout<<"Lanjut? (y/n)";cin>>lnjt;			
-			if(lnjt == 'y'||lnjt == 'Y'){
-				if(saldo<nominal){
-					system("cls");
-					cout<<"Saldo anda kurang!"<<endl;
-				}else{
-					cout<<"Pembayaran berhasil!"<<endl;
-					total = nominal+tiket;
-					saldo -= total;
-					cout<<"Sisa saldo anda : "<<saldo<<endl;
-				}
-			}else if(lnjt=='n'||lnjt=='N'){
-				system("cls");
-				continue;
-			}
-		break;
+			konfir_tiket();
+			break;
 		}
 		case 4:{
-			system("cls");
-			cout<<"Pembayaran air bersih  \n";
-			cout<<"Nomor Virtual      :  ";cin>>nmr_vrtual;
-			cout<<"Tagihan anda       :  ";cin>>tagihan;
-			system("cls");
-			cout<<"Nomor virtual      : "<<nmr_vrtual<<endl;
-			cout<<"Tagihan            : "<<tagihan<<endl;
-			cout<<"Biaya Transaksi    : "<<transaksi<<endl;
-			cout<<"Total tagihan anda : "<<tagihan + transaksi<<endl;
-			cout<<"Lanjut? (y/n)";cin>>lnjt;
-			if(lnjt=='y'||lnjt=='Y'){
-				if(saldo<tagihan){
-					system("cls");
-					cout<<"Saldo anda kurang !!!"<<endl;
-				}else{
-					system("cls");
-					cout<<"Pembayaran berhasil!"<<endl;
-					total = tagihan+transaksi;
-					saldo -= total;
-					cout<<"Sisa saldo anda : "<<saldo<<endl;
-				}
-			}else if(lnjt=='n'||lnjt=='N'){
-				system("cls");
-				continue;
-				}
+			konfir_PDAM();
 			break;
 		}
 		case 5:{
-			cout<<"IDPEL/No Meter : ";cin>>idpel;
-			system("CLS");
-				cout<<"Pilih nominal \n";
-				cout<<"1. 20000 	 5. 500000\n";
-				cout<<"2. 50000 	 6. 1 juta\n";
-				cout<<"3. 100000	 7. 5 juta\n";
-				cout<<"4. 200000	 8. 10 juta\n";
-				cin>>pil;
-				if(pil==1){
-					system("cls");
-					cout<<"Nomor   : "<<idpel<<endl;
-					cout<<"Nominal : "<<20000<<endl;
-					cout<<"Biaya transaksi : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<20000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						if(saldo<20000){
-							system("cls");
-							cout<<"Saldo anda kurang !!!"<<endl;
-						}else{
-							cout<<"===pembayaran berhasil==="<<endl;
-							total = 20000+transaksi;
-							saldo -= total;
-							cout<<"Sisa saldo anda : "<<saldo<<endl;
-						}
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==2){
-					system("cls");
-					cout<<"Nomor            : "<<idpel<<endl;
-					cout<<"Nominal          : "<<50000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<50000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						if(saldo<50000){
-							system("cls");
-							cout<<"Saldo anda kurang !!!"<<endl;
-						}else{
-							cout<<"===pembayaran berhasil==="<<endl;
-							total = 50000+transaksi;
-							saldo -= total;
-							cout<<"Sisa saldo anda : "<<saldo<<endl;
-						}
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==3){
-					system("cls");
-					cout<<"Nomor            : "<<idpel<<endl;
-					cout<<"Nominal          : "<<100000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<100000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						if(saldo<100000){
-							system("cls");
-							cout<<"Saldo anda kurang !!!"<<endl;
-						}else{
-							cout<<"===pembayaran berhasil==="<<endl;
-							total = 100000+transaksi;
-							saldo -= total;
-							cout<<"Sisa saldo anda : "<<saldo<<endl;
-						}
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==4){
-					system("cls");
-					cout<<"Nomor            : "<<idpel<<endl;
-					cout<<"Nominal          : "<<200000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<10000000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						if(saldo<200000){
-							system("cls");
-							cout<<"Saldo anda kurang !!!"<<endl;
-						}else{
-							cout<<"===pembayaran berhasil==="<<endl;
-							total = 200000+transaksi;
-							saldo -= total;
-							cout<<"Sisa saldo anda : "<<saldo<<endl;
-						}
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==5){
-					system("cls");
-					cout<<"Nomor            : "<<idpel<<endl;
-					cout<<"Nominal          : "<<500000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<500000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						if(saldo<500000){
-							system("cls");
-							cout<<"Saldo anda kurang !!!"<<endl;
-						}else{
-							cout<<"===pembayaran berhasil==="<<endl;
-							total = 500000+transaksi;
-							saldo -= total;
-							cout<<"Sisa saldo anda : "<<saldo<<endl;
-						}
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==6){
-					system("cls");
-					cout<<"Nomor            : "<<idpel<<endl;
-					cout<<"Nominal          : "<<1000000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<1000000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						if(saldo<1000000){
-							system("cls");
-							cout<<"Saldo anda kurang !!!"<<endl;
-						}else{
-							cout<<"===pembayaran berhasil==="<<endl;
-							total = 1000000+transaksi;
-							saldo -= total;
-							cout<<"Sisa saldo anda : "<<saldo<<endl;
-						}
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==7){
-					system("cls");
-					cout<<"Nomor            : "<<idpel<<endl;
-					cout<<"Nominal          : "<<5000000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<5000000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						if(saldo<5000000){
-							system("cls");
-							cout<<"Saldo anda kurang !!!"<<endl;
-						}else{
-							cout<<"===pembayaran berhasil==="<<endl;
-							total = 5000000+transaksi;
-							saldo -= total;
-							cout<<"Sisa saldo anda : "<<saldo<<endl;
-						}
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}else if(pil==8){
-					system("cls");
-					cout<<"Nomor            : "<<idpel<<endl;
-					cout<<"Nominal          : "<<10000000<<endl;
-					cout<<"Biaya transaksi  : "<<transaksi<<endl;
-					cout<<"Total pembayaran : "<<10000000+transaksi<<endl;
-					cout<<"Lanjut? (y/n)"<<endl;
-					cin>>lnjt;
-					if(lnjt == 'y'||lnjt == 'Y'){
-						if(saldo<10000000){
-							system("cls");
-							cout<<"Saldo anda kurang !!!"<<endl;
-						}else{
-							cout<<"===pembayaran berhasil==="<<endl;
-							total = 10000000+transaksi;
-							saldo -= total;
-							cout<<"Sisa saldo anda : "<<saldo<<endl;
-						}
-					}else if(lnjt=='n'){
-						system("cls");
-						continue;
-					}
-				}
+			menu_PLN();
 			break;
 		}
 		default:{
 			cout<<"Saldo :"<<saldo<<endl;
 			break;
 		}
-		
 	}
 	system("pause");
 	system("cls");
 }while(pil!=6);
 }
+
 int main(){
 	pembayaran();
 }
